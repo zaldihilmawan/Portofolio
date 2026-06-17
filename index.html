@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Mahasiswa Teknik Komputer dan Jaringan - Zaldi Hilmawan">
+    <title>Zaldi Hilmawan—Portofolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0a1628;
+            --blue: #1a4480;
+            --sky: #2563eb;
+            --sky-light: #60a5fa;
+            --sky-pale: #dbeafe;
+            --white: #ffffff;
+            --off-white: #f8faff;
+            --text: #0f1c2e;
+            --text-mid: #3d5166;
+            --text-soft: #7a90a8;
+            --border: #d4e4f7;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+       
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--off-white); }
+        ::-webkit-scrollbar-thumb { background: var(--sky); border-radius: 3px; }
+
+        .nav-mobile { display: none; }
+
+       
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 18px 40px;
+            transition: all 0.4s ease;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 10px 20px 10px 20px;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled .nav-inner {
+            background: rgba(255,255,255,0.96);
+            border-color: var(--border);
+            box-shadow: 0 4px 24px rgba(10,22,40,0.08);
+        }
+
+        .navbar.scrolled .nav-logo {
+            color: var(--navy);
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--text-mid);
+        }
+
+        .navbar.scrolled .nav-links a:hover,
+        .navbar.scrolled .nav-links a.active {
+            color: var(--sky);
+        }
+
+        .navbar.scrolled .hamburger span {
+            background: var(--navy);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-logo span {
+            color: var(--sky-light);
+        }
+
+        .nav-clock {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-left: 14px;
+            padding-left: 14px;
+            border-left: 1px solid rgba(255,255,255,0.2);
+            transition: color 0.3s, border-color 0.3s;
+            line-height: 1.25;
+        }
+
+        .nav-clock .nav-clock-time {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            color: rgba(255,255,255,0.9);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .navbar.scrolled .nav-clock .nav-clock-time {
+            color: var(--navy);
+        }
+
+        .nav-clock .nav-clock-date {
+            font-family: var(--font-body);
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.6);
+            display: block;
+        }
+
+        .navbar.scrolled .nav-clock {
+            color: var(--navy);
+            border-left-color: var(--border);
+        }
+
+        .navbar.scrolled .nav-clock .nav-clock-date {
+            color: var(--text-soft);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            padding: 7px 14px;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links a.active {
+            color: white;
+            background: rgba(37,99,235,0.5);
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--text-mid);
+        }
+
+        .navbar.scrolled .nav-links a:hover {
+            color: var(--navy);
+            background: var(--sky-pale);
+        }
+
+        .navbar.scrolled .nav-links a.active {
+            color: var(--sky);
+            background: var(--sky-pale);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 80px solid rgba(37,99,235,0.12);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -120px;
+            left: 30%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 50px solid rgba(96,165,250,0.08);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 110px 40px 80px;
+            width: 100%;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(37,99,235,0.15);
+            border: 1px solid rgba(37,99,235,0.3);
+            color: var(--sky-light);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--sky-light);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero-greeting {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 0.6rem;
+            font-weight: 300;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-name .line2 {
+            color: var(--sky-light);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.85;
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--sky);
+            color: white;
+            padding: 13px 28px;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 2px solid var(--sky);
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            border-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37,99,235,0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: rgba(255,255,255,0.8);
+            padding: 13px 28px;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 1.5px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        .hero-photo-wrap {
+            position: relative;
+        }
+
+        .hero-photo-frame {
+            width: 320px;
+            height: 380px;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid rgba(37,99,235,0.4);
+        }
+
+        .hero-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .hero-photo-accent {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(96,165,250,0.25);
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        .hero-stat {
+            position: absolute;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero-stat.s1 {
+            bottom: -16px;
+            left: -24px;
+        }
+
+        .hero-stat.s2 {
+            top: -12px;
+            right: -30px;
+        }
+
+        .hero-stat .num {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .hero-stat .lbl {
+            font-size: 0.7rem;
+            color: var(--text-soft);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        
+        section { padding: 90px 0; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--sky);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--text-mid);
+            font-weight: 300;
+            line-height: 1.7;
+            max-width: 560px;
+        }
+
+       
+        .about {
+            background: var(--off-white);
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-left .desc {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+            font-weight: 300;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .chip {
+            background: var(--sky-pale);
+            color: var(--blue);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .about-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.4rem 1.6rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: box-shadow 0.25s;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+        }
+
+        .info-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--sky-pale);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--sky);
+        }
+
+        .info-card-label {
+            font-size: 0.75rem;
+            color: var(--text-soft);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .info-card-value {
+            font-size: 0.95rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .skills-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            gap: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-block {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            transition: all 0.3s;
+        }
+
+        .skill-block:hover {
+            border-color: var(--sky-light);
+            box-shadow: 0 6px 28px rgba(37,99,235,0.1);
+            transform: translateY(-3px);
+        }
+
+        .skill-block-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1.4rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-block-title svg {
+            color: var(--sky);
+        }
+
+        .skill-row {
+            margin-bottom: 1.1rem;
+        }
+
+        .skill-row:last-child { margin-bottom: 0; }
+
+        .skill-row-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+        }
+
+        .skill-row-name { color: var(--text-mid); font-weight: 400; }
+
+        .skill-row-pct {
+            color: var(--sky);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .bar-track {
+            height: 5px;
+            background: var(--sky-pale);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--sky) 0%, var(--sky-light) 100%);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .projects { background: var(--off-white); }
+
+        .projects-intro {
+            margin-bottom: 3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sky), var(--sky-light));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(37,99,235,0.1);
+            border-color: var(--sky-light);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-year {
+            font-size: 0.75rem;
+            color: var(--text-soft);
+            background: var(--off-white);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .project-num {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--border);
+            line-height: 1;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .project-tags span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--blue);
+            background: var(--sky-pale);
+            padding: 3px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-desc {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            background: var(--off-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.25s;
+            color: var(--text);
+        }
+
+        .contact-link:hover {
+            background: var(--sky-pale);
+            border-color: var(--sky-light);
+            transform: translateX(4px);
+        }
+
+        .contact-link-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.25s;
+        }
+
+        .contact-link:hover .contact-link-icon {
+            border-color: var(--sky-light);
+        }
+
+        .contact-link-icon.wa { color: #25D366; }
+        .contact-link-icon.li { color: #0077b5; }
+        .contact-link-icon.ig { color: #E4405F; }
+        .contact-link-icon.em { color: var(--sky); }
+
+        .contact-link-text strong {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1px;
+        }
+
+        .contact-link-text span {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+        }
+
+        .cv-panel {
+            background: var(--navy);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-panel::before {
+            content: 'CV';
+            position: absolute;
+            right: -10px;
+            bottom: -30px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 7rem;
+            color: rgba(255,255,255,0.04);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .cv-panel-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--sky-light);
+            margin-bottom: 0.6rem;
+        }
+
+        .cv-panel-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
+        }
+
+        .cv-panel-desc {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 1.8rem;
+        }
+
+        .cv-preview-box {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cv-preview-icon {
+            width: 40px;
+            height: 48px;
+            background: rgba(37,99,235,0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cv-preview-info strong {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .cv-preview-info span {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .cv-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .cv-btn-download {
+            flex: 1;
+            background: var(--sky);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cv-btn-download:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+        }
+
+        .cv-btn-view {
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.7);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .cv-btn-view:hover {
+            background: rgba(255,255,255,0.14);
+            color: white;
+        }
+
+        .footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.35);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--sky-light);
+            text-decoration: none;
+        }
+
+        #btt {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 44px;
+            height: 44px;
+            background: var(--sky);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            box-shadow: 0 4px 16px rgba(37,99,235,0.4);
+            transition: all 0.25s;
+        }
+
+        #btt:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        #btt.show { display: flex; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .skills-grid,
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                padding: 100px 20px 60px;
+                text-align: center;
+            }
+
+            .hero-photo-wrap { order: -1; display: flex; justify-content: center; }
+            .hero-photo-frame { width: 220px; height: 270px; }
+            .hero-stat { display: none; }
+            .hero-actions { justify-content: center; }
+            .hero-desc { margin: 0 auto 2rem; }
+
+            .about-layout,
+            .contact-layout { grid-template-columns: 1fr; }
+            .skills-grid,
+            .projects-grid { grid-template-columns: 1fr; }
+            .skills-header { flex-direction: column; align-items: flex-start; }
+            .container { padding: 0 20px; }
+            section { padding: 60px 0; }
+
+            .nav-mobile {
+                display: none;
+                position: fixed;
+                top: 65px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1.5rem;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+                flex-direction: column;
+                gap: 1rem;
+                z-index: 99;
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-mobile.open { display: flex; }
+
+            .nav-mobile a {
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--text);
+                text-decoration: none;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-mobile a:last-child { border-bottom: none; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name { font-size: 2.5rem; letter-spacing: -1px; }
+            .section-title { font-size: 2rem; }
+            .cv-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">Zaldi<span>.</span></a>
+            <span class="nav-clock" id="navClock">
+                <span class="nav-clock-time" id="navClockTime"></span>
+                <span class="nav-clock-date" id="navClockDate"></span>
+            </span>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <div class="nav-mobile" id="navMobile">
+        <a href="#home">Beranda</a>
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#projects">Proyek</a>
+        <a href="#contact">Kontak</a>
+    </div>
+
+    <section id="home" class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <p class="hero-greeting">Halo, saya</p>
+                <h1 class="hero-name">
+                    Zaldi<br>
+                    <span class="line2">Hilmawan</span>
+                </h1>
+                <h2 class="hero-subtitle">Siswa SMK Teknik Komputer dan Jaringan</h2>
+                <p class="hero-desc">
+                    Saya sangat berminat dalam perkembangan dunia Teknologi Informasi dan Komunikasi Digital
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        Hubungi Saya
+                    </a>
+                    <a href="#projects" class="btn-outline">
+                        Lihat Proyek
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-photo-wrap">
+                <div class="hero-photo-frame">
+                    
+                    <img src="zall.jpg" alt="Zaldi Hilmawan">
+                    <div class="hero-photo-accent"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-left reveal">
+                    <p class="section-label">Tentang Saya</p>
+                    <h2 class="section-title">Saya Belajar dunia IT secara Otodidak <br>Dengan metode belajar secara teori—praktik nyata.</h2>
+                    <p class="about-left desc" style="margin-top:1.4rem;">
+                        Saya siswa SMK dengan keterampilan Teknik Komputer dan Jaringan yang mempunyai rasa ingin tahu yang besar 
+                        dalam dunia IT dan kemajuan Teknologi. Saya juga
+                        aktif terjun ke pelatihan dan sertifikasi untuk memastikan skill saya relevan 
+                        dengan dunia industri.
+                    </p>
+                    <p class="about-left desc">
+                      
+                    </p>
+                    <div class="about-chips">
+                        <span class="chip">Cloud Computing</span>
+                        <span class="chip">Network Security</span>
+                        <span class="chip">Automation</span>
+                        <span class="chip">Linux</span>
+                        <span class="chip">MikroTik</span>
+                        <span class="chip">Web Dev</span>
+                        <span class="chip">Microsoft Office</span>
+                        <span class="chip">Microsoft Word</span>
+                        <span class="chip">Microsoft Exel</span>
+                    </div>
+                </div>
+                <div class="about-cards reveal">
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-card-label">Lulusan</div>
+                            <div class="info-card-value">SMKN 1 Rengasdengklok</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-card-label">Jurusan</div>
+                            <div class="info-card-value">Teknik Jaringan Komputer & Telekomunikasi</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-card-label">Email</div>
+                            <div class="info-card-value">zaldihilmawan15@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-card-label">Status</div>
+                            <div class="info-card-value">Fresh Graduate 
+                              Terbuka Magang & Freelance</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="skills-header">
+                <div class="reveal">
+                    <p class="section-label">Keahlian</p>
+                    <h2 class="section-title">Skill & Kompetensi</h2>
+                </div>
+                <p class="section-sub reveal" style="text-align:right; max-width: 360px;">
+                    Dibangun melalui praktik langsung, lab, dan proyek nyata — bukan hanya teori di kelas.
+                </p>
+            </div>
+            <div class="skills-grid">
+                <!-- Networking -->
+                <div class="skill-block reveal">
+                    <div class="skill-block-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M12 8v3M8.7 17.3l-2.4-2.4M15.3 17.3l2.4-2.4"/></svg>
+                        Networking
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Cisco Routing & Switching</span>
+                            <span class="skill-row-pct">65%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="65"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Network Security</span>
+                            <span class="skill-row-pct">40%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="40"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">MikroTik Administration</span>
+                            <span class="skill-row-pct">75%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="75"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-block reveal">
+                    <div class="skill-block-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                        System & Server
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Linux Server Administration</span>
+                            <span class="skill-row-pct">80%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Windows Server</span>
+                            <span class="skill-row-pct">70%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="70"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Virtualization (VMware, VBox)</span>
+                            <span class="skill-row-pct">80%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="80"></div></div>
+                    </div>
+                </div>
+
+                <div class="skill-block reveal">
+                    <div class="skill-block-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        Programming
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">HTML, CSS, JavaScript</span>
+                            <span class="skill-row-pct">50%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="50"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">PHP & MySQL</span>
+                            <span class="skill-row-pct">10%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="10"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Python</span>
+                            <span class="skill-row-pct">40%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="40"></div></div>
+                    </div>
+                </div>
+                <div class="skill-block reveal">
+                    <div class="skill-block-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7h8M8 12h8M8 17h5"/></svg>
+                        Microsoft Office
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Microsoft Word</span>
+                            <span class="skill-row-pct">85%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="85"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Microsoft Excel</span>
+                            <span class="skill-row-pct">50%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="50"></div></div>
+                    </div>
+                    <div class="skill-row">
+                        <div class="skill-row-header">
+                            <span class="skill-row-name">Microsoft PowerPoint</span>
+                            <span class="skill-row-pct">55%</span>
+                        </div>
+                        <div class="bar-track"><div class="bar-fill" data-w="55"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="projects-intro reveal">
+                <p class="section-label">Proyek</p>
+                <h2 class="section-title">Praktek Yang Pernah Saya<br>Kerjakan</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <div class="project-card-top">
+                        <span class="project-num">01</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-title">Implementasi VLAN pada Jaringan Kampus</h3>
+                    <p class="project-desc">Merancang dan mengimplementasikan segmentasi jaringan menggunakan VLAN untuk meningkatkan keamanan dan efisiensi jaringan Sekolah.</p>
+                    <div class="project-tags">
+                        <span>Cisco Packet Tracer</span>
+                        <span>VLAN</span>
+                        <span>Inter-VLAN Routing</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-card-top">
+                        <span class="project-num">02</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-title">Sistem Monitoring Jaringan Real-time</h3>
+                    <p class="project-desc">Membangun dashboard monitoring jaringan berbasis web menggunakan Cacti dan custom script untuk monitoring bandwidth dan uptime perangkat network.</p>
+                    <div class="project-tags">
+                        <span>Cacti</span>
+                        <span>Python</span>
+                        <span>SNMP</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-card-top">
+                        <span class="project-num">03</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-title">Konfigurasi Firewall & VPN Server</h3>
+                    <p class="project-desc">Setup dan konfigurasi firewall menggunakan pfSense dan implementasi OpenVPN untuk akses remote yang aman ke jaringan internal.</p>
+                    <div class="project-tags">
+                        <span>pfSense</span>
+                        <span>OpenVPN</span>
+                        <span>Network Security</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-card-top">
+                        <span class="project-num">04</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-title">Web Server dengan Load Balancing</h3>
+                    <p class="project-desc">Membangun infrastruktur web server dengan implementasi load balancing menggunakan Nginx untuk distribusi traffic yang optimal.</p>
+                    <div class="project-tags">
+                        <span>Nginx</span>
+                        <span>Linux</span>
+                        <span>Load Balancing</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-card-top">
+                        <span class="project-num">05</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-title">Hotspot Management System</h3>
+                    <p class="project-desc">Mengembangkan sistem manajemen hotspot dengan user authentication dan bandwidth management menggunakan MikroTik RouterOS.</p>
+                    <div class="project-tags">
+                        <span>MikroTik</span>
+                        <span>Hotspot</span>
+                        <span>User Manager</span>
+                    </div>
+                </div>
+
+                <div class="project-card reveal">
+                    <div class="project-card-top">
+                        <span class="project-num">06</span>
+                        <span class="project-year">2025</span>
+                    </div>
+                    <h3 class="project-title">Backup Automation Script</h3>
+                    <p class="project-desc">Membuat script otomasi backup konfigurasi network devices dan database server menggunakan Python dengan scheduled task.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Bash Script</span>
+                        <span>Cron Job</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="reveal">
+                    <p class="section-label">Kontak</p>
+                    <h2 class="section-title">Saya<br>Terhubung</h2>
+                    <p class="contact-desc">
+                        Saya terbuka untuk kesempatan magang, freelance, kontrak.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:zaldihilmawan15@gmail.com" class="contact-link">
+                            <div class="contact-link-icon em">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <strong>Email</strong>
+                                <span> </span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/6283127375668" target="_blank" class="contact-link">
+                            <div class="contact-link-icon wa">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <strong>WhatsApp</strong>
+                                <span> </span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/zaldi-hilmawan-045188360" target="_blank" class="contact-link">
+                            <div class="contact-link-icon li">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <strong>LinkedIn</strong>
+                                <span> </span>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/zaldi._11" target="_blank" class="contact-link">
+                            <div class="contact-link-icon ig">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            </div>
+                            <div class="contact-link-text">
+                                <strong>Instagram</strong>
+                                <span> </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <div class="cv-panel">
+                        <p class="cv-panel-label">Curriculum Vitae</p>
+                        <h3 class="cv-panel-title">Zaldi._CV </h3>
+                        <p class="cv-panel-desc">
+                            Lihat perjalanan akademik, pengalaman, dan skill saya secara lengkap 
+                            dalam format CV yang siap dibagikan ke recruiter atau institusi.
+                        </p>
+
+                        <div class="cv-preview-box">
+                            <div class="cv-preview-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            </div>
+                            <div class="cv-preview-info">
+                                <strong>CV Zaldi Hilmawan.pdf</strong>
+                                <span>Curriculum Vitae — CV </span>
+                            </div>
+                        </div>
+
+                        <div class="cv-buttons">
+                            <!-- 
+                                INSTRUKSI: 
+                                Ganti href di bawah dengan link Google Drive / file hosting CV-mu.
+                                Contoh: href="https://drive.google.com/file/d/XXXX/view"
+                                Untuk download langsung: href="CV_Zaldi_Hilmawan.pdf" download
+                            -->
+                            <a href="https://drive.google.com/file/d/1haBTDKMEWOdcUTd_RVYcqXwOa619cZTD/view?usp=drivesdk" download class="cv-btn-download">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Download CV
+                            </a>
+                            <a href="https://drive.google.com/file/d/1haBTDKMEWOdcUTd_RVYcqXwOa619cZTD/view?usp=drivesdk" target="_blank" class="cv-btn-view">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                Preview
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 Zaldi Hilmawan</p>
+    </footer>
+
+    <button id="btt" aria-label="Kembali ke atas">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m18 15-6-6-6 6"/></svg>
+    </button>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 30);
+        });
+
+        // Hamburger
+        const hamburger = document.getElementById('hamburger');
+        const navMobile = document.getElementById('navMobile');
+        hamburger.addEventListener('click', () => {
+            navMobile.classList.toggle('open');
+            const spans = hamburger.querySelectorAll('span');
+            const isOpen = navMobile.classList.contains('open');
+            spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
+            spans[1].style.opacity = isOpen ? '0' : '1';
+            spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
+        });
+
+        navMobile.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                navMobile.classList.remove('open');
+                const spans = hamburger.querySelectorAll('span');
+                spans.forEach(s => { s.style.transform = ''; s.style.opacity = '1'; });
+            });
+        });
+
+        const navLinksAll = document.querySelectorAll('.nav-links a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(s => {
+                if (window.scrollY >= s.offsetTop - 120) current = s.id;
+            });
+            navLinksAll.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+
+        const skillObserver = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.querySelectorAll('.bar-fill').forEach(bar => {
+                        bar.style.width = bar.dataset.w + '%';
+                    });
+                    skillObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.skill-block').forEach(b => skillObserver.observe(b));
+
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    e.target.style.transitionDelay = (i % 3) * 0.1 + 's';
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        
+        const btt = document.getElementById('btt');
+        window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
+        btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        
+        document.body.style.opacity = '0';
+        window.addEventListener('load', () => {
+            document.body.style.transition = 'opacity 0.5s';
+            document.body.style.opacity = '1';
+        });
+
+        function updateNavClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            const date = now.toLocaleDateString('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+            document.getElementById('navClockTime').textContent = time;
+            document.getElementById('navClockDate').textContent = date;
+        }
+        updateNavClock();
+        setInterval(updateNavClock, 1000);
+    </script>
+</body>
+</html>
